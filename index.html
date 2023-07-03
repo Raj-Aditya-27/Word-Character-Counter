@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word and character counter</title>
+    <style>
+        body {
+            padding: 80px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #1abc9c;
+            padding: 10px;
+            margin: 0px;
+            font-family: sans-serif;
+            color: white;
+        }
+
+        textarea {
+            width: 99.3%;
+            border-color: #1abc9c;
+        }
+
+        p {
+            text-align: center;
+            background-color: #1abc9c;
+            padding: 10px;
+            margin: 0px;
+            font-family: sans-serif;
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Word and character counter</h1>
+    <textarea id="textBox" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word">0</span> words and
+        <span id="char">0</span> characters
+    </p>
+
+    <script>
+        let textBox = document.getElementById("textBox");
+
+        textBox.addEventListener('input', function () {
+            let text = this.value;//text contains whatever input is given in text area
+            let char = text.length;//to get characters of text
+            document.getElementById("char").innerHTML = char;//putting the value of number of characters in char id of paragraph
+
+            text=text.trim();//removing spaces from starting and ending of text
+            let words=text.split(" ");//splitting words on the basis of one space
+            //creating new array cleanlist where it only contains all element of words except space element
+            let cleanList=words.filter(function(elm){
+                return elm!="";
+            })
+            document.getElementById("word").innerHTML=cleanList.length;//updating
+        })
+    </script>
+</body>
+
+</html>
